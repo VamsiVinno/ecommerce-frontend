@@ -17,96 +17,102 @@
           </button>
         </div>
         <div>
-          <p style="font-size: 16px; color:gray;" class="ml-5"> DEFAULT ADDRESS</p>
-        
-<div 
-class="border ml-5 mb-3">
+          <p style="font-size: 16px; color: gray" class="ml-5">
+            DEFAULT ADDRESS
+          </p>
 
-  <input
-            type="radio"
-            (change)="onSelect(0)"
-            value="{{ addressStore[0] }}"
-            class="float-left mt-3 ml-3 form-check-input"
-            name="r1"
-          checked />
-          <div class="ml-5">
-            <p style="font-size: 18px; font-weight: 500px" class="mt-2">
-              {{ addressStore[0].username }}
-            </p>
-            <div class="d-flex">
-              <p class="mr-2">{{ addressStore[0].address }}</p>
-              <p>{{ addressStore[0].landmark }} {{ addressStore[0].pincode }}</p>
+          <div class="border ml-5 mb-3">
+            <input
+              *ngif="addressStore.length"
+              type="radio"
+              (change)="onSelect(0)"
+              value="{{ addressStore[0] }}"
+              class="float-left mt-3 ml-3 form-check-input"
+              name="r1"
+              checked
+            />
+            <div class="ml-5">
+              <p style="font-size: 18px; font-weight: 500px" class="mt-2">
+                {{ addressStore[0]?.username }}
+              </p>
+              <div class="d-flex">
+                <p class="mr-2">{{ addressStore[0]?.address }}</p>
+                <p>
+                  {{ addressStore[0]?.landmark }} {{ addressStore[0]?.pincode }}
+                </p>
+              </div>
+              <div class="d-flex">
+                <span>Mobile:</span>
+                <p>{{ addressStore[0]?.phone }}</p>
+              </div>
+              <button
+                class="btn border-dark text-dark mr-5"
+                (click)="onRemove(0)"
+              >
+                Remove
+              </button>
+              <button
+                class="btn border-dark text-dark"
+                data-toggle="modal"
+                data-target="#exampleModalLong"
+                (click)="onEdit(0)"
+              >
+                Edit
+              </button>
+              <br /><br />
             </div>
-            <div class="d-flex">
-              <span>Mobile:</span>
-              <p>{{ addressStore[0].phone }}</p>
-            </div>
-            <button
-              class="btn border-dark text-dark mr-5"
-              (click)="onRemove(0)"
-            >
-              Remove
-            </button>
-            <button
-              class="btn border-dark text-dark"
-              data-toggle="modal"
-              data-target="#exampleModalLong"
-              (click)="onEdit(0)"
-            >
-              Edit
-            </button>
-            <br /><br />
           </div>
-</div>
-</div>
-<div>
-  <p style="font-size: 16px; color:gray;" class="ml-5">OTHER ADDRESS</p>
-        <div
-          *ngFor="let item of otherAddress; let i = index
-          "
-          class="border ml-5 mb-1"
-        >
-          <input
-            type="radio"
-            (change)="onSelect(i+1)"
-            value="{{ item }}"
-            class="float-left mt-3 ml-3 form-check-input"
-            name="r1"
-           />
-          <div class="ml-5">
-            <p style="font-size: 18px; font-weight: 500px" class="mt-2">
-              {{ item.username }}
-            </p>
-            <div class="d-flex">
-              <p class="mr-2">{{ item.address }}</p>
-              <p>{{ item.landmark }} {{ item.pincode }}</p>
+        </div>
+        <div>
+          <p style="font-size: 16px; color: gray" class="ml-5">OTHER ADDRESS</p>
+          <div
+            *ngFor="let item of otherAddress; let i = index"
+            class="border ml-5 mb-1"
+          >
+            <input
+              type="radio"
+              (change)="onSelect(i + 1)"
+              value="{{ item }}"
+              class="float-left mt-3 ml-3 form-check-input"
+              name="r1"
+            />
+            <div class="ml-5">
+              <p style="font-size: 18px; font-weight: 500px" class="mt-2">
+                {{ item.username }}
+              </p>
+              <div class="d-flex">
+                <p class="mr-2">{{ item.address }}</p>
+                <p>{{ item.landmark }} {{ item.pincode }}</p>
+              </div>
+              <div class="d-flex">
+                <span>Mobile:</span>
+                <p>{{ item.phone }}</p>
+              </div>
+              <button
+                class="btn border-dark text-dark mr-5"
+                (click)="onRemove(i + 1)"
+              >
+                Remove
+              </button>
+              <button
+                class="btn border-dark text-dark"
+                data-toggle="modal"
+                data-target="#exampleModalLong"
+                (click)="onEdit(i + 1)"
+              >
+                Edit
+              </button>
+              <br /><br />
             </div>
-            <div class="d-flex">
-              <span>Mobile:</span>
-              <p>{{ item.phone }}</p>
-            </div>
-            <button
-              class="btn border-dark text-dark mr-5"
-              (click)="onRemove(i+1)"
-            >
-              Remove
-            </button>
-            <button
-              class="btn border-dark text-dark"
-              data-toggle="modal"
-              data-target="#exampleModalLong"
-              (click)="onEdit(i+1)"
-            >
-              Edit
-            </button>
-            <br /><br />
           </div>
         </div>
       </div>
-      </div>
-      <div class="col-lg-5 text-secondary border ml-2" *ngIf="cartArray.length>0">
+      <div
+        class="col-lg-5 text-secondary border ml-2"
+        *ngIf="cartArray.length > 0"
+      >
         <h4>ITEM DETAILS</h4>
-        <div style="overflow-y:auto">
+        <div style="overflow-y: auto">
           <div *ngFor="let item of cartArray">
             <div *ngIf="item.images" class="row mt-2 d-inline">
               <img
@@ -132,11 +138,7 @@ class="border ml-5 mb-3">
             <span>TotalAmount</span>:
             <span class="float-right"> {{ totalAmount | currency }} </span>
           </p>
-          <button
-            class="btn btn-danger mr-4 w-100"
-            (click)="onPlaceOrder()"
-            
-          >
+          <button class="btn btn-danger mr-4 w-100" (click)="onPlaceOrder()">
             Continue
           </button>
         </div>
