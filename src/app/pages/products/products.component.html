@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row mt-3" i18n>
+    <div class="col-lg-7">
+      <div class="row">
+        <div class="col-lg-2 ml-5 mt-3">
+          <ng-container
+            *ngFor="let item of productDetails?.images; let i = index"
+          >
+            <div
+              class="child zoomA"
+              *ngIf="item"
+              (mouseover)="onMouse(i)"
+              [style.background-image]="'url(' + item + ')'"
+              style="
+                height: 80px;
+                width: 80px;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-origin: border-box;
+              "
+            ></div>
+          </ng-container>
+        </div>
+        <div class="col-lg-6 col-md-6 mt-3">
+          <!-- <lib-ngx-image-zoom
+            [thumbImage]="(productDetails?.images)![imageIndex]"
+            [fullImage]="(productDetails?.images)![imageIndex]"
+            [magnification]="1"
+            [enableScrollZoom]="true"
+            [enableLens]="true"
+            [lensWidth]="250"
+            [lensHeight]="250"
+            (zoomPosition)="getPosition($event)"
+            (mouseover)="showPreview = true"
+            (mouseout)="showPreview = false"
+          ></lib-ngx-image-zoom> -->
+          <ng-img-magnifier
+            thumbImage="{{ (productDetails?.images)![imageIndex] }}"
+            fullImage="{{ (productDetails?.images)![imageIndex] }}"
+            [top]="'1'"
+            [right]="'-190'"
+            [lensWidth]="'200'"
+            [lensHeight]="'200'"
+            [resultWidth]="'150'"
+            [resultHeight]="'120'"
+            [imgWidth]="'500'"
+            [imgHeight]="'650'"
+          >
+          </ng-img-magnifier>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <br /><br />
+      <h3>{{ productDetails?.brand }}</h3>
+      <p>{{ productDetails?.product_name }}</p>
+      <p>
+        <span style="font-weight: 500; font-size: 18px" class="mr-2"
+          >Price:</span
+        >{{ productDetails?.price | currency }}
+      </p>
+      <button class="btn btn-dark mr-3" (click)="onAddBag()">
+        <i class="fa fa-shopping-cart mr-1"></i>Add to bag
+      </button>
+      <button class="btn btn-success" (click)="onBuy()">
+        <i class="fa fa-bolt mr-1"></i>
+        Buy now
+      </button>
+    </div>
+    
+  </div>
+</div>
+
+

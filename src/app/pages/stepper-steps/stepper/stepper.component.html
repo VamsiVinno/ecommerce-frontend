@@ -1,0 +1,25 @@
+
+  <mat-stepper [linear]="isLinear" #stepper >
+    <mat-step label="BAG"   [completed]="false" >
+        <div  style="width: 100%;">
+            <app-cart  (firstStep)="test(stepper)" (isEdit)="onEdit(stepper,$event)" ></app-cart>
+        </div>
+    </mat-step>
+    <mat-step  label="ADDRESS"  [completed]="false">
+        <div >
+            <app-address (secondStep)="test(stepper)" (isEdit)="onEdit(stepper,$event)" ></app-address>
+        </div>
+    </mat-step>
+    <mat-step  label="DELIVERY"     [completed]="false">
+      <div >
+        <app-deliverydate (ThirdStep)="test(stepper)" (isEdit)="onEdit(stepper,$event)" ></app-deliverydate>
+      </div>
+  </mat-step>
+    <mat-step [completed]="isEditable">
+      <ng-template matStepLabel>PAYMENT</ng-template>
+      <div>
+        <app-payment></app-payment>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  

@@ -1,0 +1,35 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+:host ::ng-deep .mat-stepper-horizontal-line {
+  border-top-width: 1px;
+  border-top-style: dashed;
+
+}
+
+/* .mat-step{
+      width:100px
+  }
+   */
+   :host ::ng-deep .mat-horizontal-stepper-header-container {
+  width: 500px;
+  margin: auto;
+}
+
+:host ::ng-deep.mat-step-header .mat-step-icon {
+
+  display: none;
+}
+
+/* ::ng-deep .mat-step-header .mat-step-selected {
+    text-decoration: underline;
+} */
+:host ::ng-deep.mat-step-header .mat-step-label.mat-step-label-selected {
+  color: rgba(0, 0, 0, .87);
+  text-decoration: underline;
+}
+  
+  /* ::ng-deep.mat-horizontal-stepper-header  {
+    pointer-events: none!important;
+  } */

@@ -1,0 +1,91 @@
+<div class="border border-left-0" *ngIf="selectedCategory">
+  <div class="list-group mt-4">
+    <ul style="list-style: none" *ngIf="selectedCategory == 'men'" class="ml-5">
+      <h3>{{ "categories" | translate }}</h3>
+      <li *ngFor="let item of mensWear; let i = index">
+        <input
+          type="checkbox"
+          (change)="onCheck($event, i)"
+          value="{{ item.type }}"
+          [checked]="item.enableCheckBox"
+        />
+        {{ item.type }}
+        <!-- <p>{{item.enableCheckBox}}</p> -->
+      </li>
+      <br />
+      <hr />
+    </ul>
+    <ul
+      style="list-style: none"
+      *ngIf="selectedCategory == 'women'"
+      class="ml-5"
+    >
+      <h3>{{ "categories" | translate }}</h3>
+      <li *ngFor="let item of womensWears; let i = index">
+        <input
+          type="checkbox"
+          (change)="onCheck($event, i)"
+          value="{{ item.type }}"
+          [checked]="item.enableCheckBox"
+        />
+        {{ item.type }}
+      </li>
+      <br />
+      <hr />
+    </ul>
+    <ul
+      *ngIf="selectedCategory == 'kids'"
+      style="list-style: none"
+      class="ml-5"
+    >
+      <h3>{{ "categories" | translate }}</h3>
+      <li>
+        <p style="font-weight: 500">Boys</p>
+      </li>
+      <li *ngFor="let item of boysWear; let i = index" class="mb-2">
+        <input
+          type="checkbox"
+          (change)="onCheck($event, i)"
+          value="{{ item.type }}"
+          [checked]="item.enableCheckBox"
+        />
+        {{ item.type }}
+      </li>
+
+      <li>
+        <p style="font-weight: 500">Girls</p>
+      </li>
+      <li *ngFor="let item of girlsWear">
+        <input
+          type="checkbox"
+          (change)="onCheck($event, 2)"
+          value="{{ item.type }}"
+          [checked]="item.enableCheckBox"
+        />
+        {{ item.type }}
+      </li>
+    </ul>
+  </div>
+  <ul style="list-style: none" *ngIf="selectedCategory" class="ml-5">
+    <h3>{{ "brands" | translate }}</h3>
+    <li *ngFor="let item of menBrands; let i = index">
+      <input
+        type="checkbox"
+        value="{{ item.type }}"
+        (click)="onBrand($event, i)"
+        [checked]="item.enableCheckBox"
+      />
+      {{ item.type }}
+    </li>
+    <br />
+    <hr />
+  </ul>
+  <ul style="list-style: none" *ngIf="selectedCategory" class="ml-5">
+    <h3>{{ "price" | translate }}</h3>
+    <li *ngFor="let item of price">
+      <input type="checkbox" value="{{ item }}" (click)="onPrice($event)" />
+      {{ item }}
+    </li>
+    <br />
+  </ul>
+</div>

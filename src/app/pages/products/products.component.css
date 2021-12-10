@@ -1,0 +1,53 @@
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+*{
+  max-height: 100%;
+}
+.child {
+  flex: 0 0 33.333333%; ;
+  margin: 5px;
+}
+
+.zoomA:hover {
+    cursor: zoom-in;
+  transform: scale(1.2);
+  transition-duration: 1s;
+}
+::ng-deep .ngxImageZoomContainer {
+    /* styles here */
+    width:540px;
+    height:678px
+  }
+  
+  ::ng-deep .ngxImageZoomThumbnail{
+      width: 100%;
+  }
+  * {box-sizing: border-box;}
+
+/* .img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  /* width: 40px;
+  height: 40px;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  /* width: 300px;
+  height: 300px;
+} */ 
+::ng-deep .img-zoom-result{
+  z-index:3
+}
+#myresult{
+  margin-left: 600px;
+}

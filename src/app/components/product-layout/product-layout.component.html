@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row p-2" >
+    <div class="col-11 d-flex p-1"  >
+      <div  class=" d-flex ml-5">
+      <p >Home</p>
+      <p *ngIf="productCategory">/{{ productCategory }}</p><p *ngFor ="let item of subCategory" class="d-flex">/{{item}}</p>
+      </div>
+      <div class="ml-lg-5 d-flex text-center mb-2" >
+        <div
+          *ngFor="let item of subCategory; let i = index"
+          class="border mr-1"
+          style="border-radius: 20px; height: 25px"
+        >
+          <p class="float-left m-auto">&nbsp;{{ item }}</p>
+          &nbsp;&nbsp;
+          <span class="d-inline"
+            ><a style="cursor: pointer" (click)="onFashionDelete(i)"><i class="fa fa-close"></i></a></span
+          >&nbsp;
+        </div>
+      </div>
+      <div
+      *ngFor="let item of brandCategory; let i = index"
+      class="border"
+      style="border-radius: 20px; height: 25px"
+    >
+      <p class="float-left m-auto">&nbsp;{{ item }}</p>
+      &nbsp;&nbsp; <span class="d-inline"><a style="cursor: pointer" (click)="onBrandDelete(i)"><i class="fa fa-close"></i></a></span
+      >&nbsp;
+    </div>
+  </div>
+    <div class="col-1 p-1" >
+    <div class="dropdown" >
+      <button
+        class="btn btn-danger dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+      {{'sortby' | translate}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" (click)="onSort(1)"> {{'lowtohigh' | translate}}</a>
+        <a class="dropdown-item" (click)="onSort(0)"> {{'hightolow' | translate}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- <div *ngIf="emptyArray">
+    <h2>Sorry no products found</h2>
+  </div> -->
+  <div class="row justify-content-center" >
+    <div class="col-2 mt-3 "  >
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-10" style="height: 830px; overflow-y:scroll">
+      <div class="row justify-content-center">
+        <div
+          class="col-12 col-lg-3 col-sm-12 col-md-3 col-xl-3 card mr-5 mt-3 p-0"
+          *ngFor="let item of productsArray | paginate: { itemsPerPage: 30, currentPage: p };let i=index"
+          (click)="onProduct(i)"
+       style="cursor: pointer;" >
+          <img class="card-img-top" src="{{ item.images[0] }}" />
+          <div class="card-body">
+            <p style="font-size: 12px">{{ item.product_name }}</p>
+            <div>
+              <p>
+                <span style="font-size: 16px; font-weight: 500">Brand</span>:{{
+                  item.brand
+                }}
+              </p>
+            </div>
+          </div>
+          <div class="card-footer d-flex">
+            <div style="margin: auto">
+              <p>
+                <span style="font-size: 16px; font-weight: 500">Price</span>:{{
+                  item.price | currency
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div >
+        <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+
+      </div>
+
+    </div>
+</div>

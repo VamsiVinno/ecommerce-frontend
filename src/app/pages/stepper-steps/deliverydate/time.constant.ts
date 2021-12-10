@@ -1,0 +1,1 @@
+export const Time=['9AM to 12PM','12PM to 3PM','3PM to 6PM','6PM to 9PM']

@@ -1,0 +1,11 @@
+div.stars {
+    width: 270px;
+    display: inline-block;
+  }
+  ::ng-deep input.star:checked ~ label.star:before {
+    color:#d12d21 !important;
+  }
+  ::ng-deep .ngx-pagination .current {
+    padding: 8px;
+    background-color: red !important;
+  }

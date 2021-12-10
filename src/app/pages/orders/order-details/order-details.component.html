@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <!-- <div class="row bg-danger">
+    <br>
+    <a style="font-size: 1.25rem; font-weight: 400; color: white; text-decoration: none;" class="ml-2 mt-1" [routerLink]="['']">KYATA</a>
+    <br><br>
+  </div> -->
+  <div class="row" style="justify-content: center;" i18n>
+    <h3 class="text-danger">Order Details</h3>
+  </div>
+  <div class="row" style="justify-content: center;">
+<div class="col-lg-8 ">
+  <div class="card bg-light" style="width: 100%">
+    <div *ngIf="orderDetails.images" style="margin:auto;" class="mt-5">
+    <img class="card-img-top" src={{orderDetails.images[0]}} style="height: 150px; width: 90px;" >
+
+    </div>
+    <div  style="margin:auto;">
+      <h3 align="center">{{orderDetails.brand}}</h3>
+      <p>{{orderDetails.product_name}}</p>
+    </div>
+    <div class="card-body">
+      <div *ngIf="orders">
+        <div class="border bg-white mb-3 p-2">
+        <h3  >Delivery Address</h3><p class="ml-5">{{orders.address}}</p>
+      </div>
+      <div class="border bg-white mb-3 p-2">
+        <h3 >Phone</h3><p>{{orders.phone}}</p>
+      </div>
+      <div class="border bg-white mb-3 p-2">
+        <h3 >Order Status</h3>  <div class="track">
+          <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+          <div class="step " [ngClass]="{'active' : orders.order_status=='ordered'}"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Picked by courier</span> </div>
+          <div class="step " [ngClass]="{'active' : orders.order_status=='ordered'}"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+          <div class="step"> <span class="icon"> <i class="fa fa-gift"></i> </span> <span class="text">Ready for pickup</span> </div>
+        </div>
+      </div>
+        <div class="border bg-white mb-3 p-2">
+        <h3 >Ordered Date</h3><p class=" mt-2">{{(orders.order_date) | date}} </p>
+
+        </div>
+        <!-- <h5 class="float-left">Order Status:</h5><p class="d-inline">{{orders.order_status}}</p><br><br><br> -->
+        </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+</div>
+  </div>
