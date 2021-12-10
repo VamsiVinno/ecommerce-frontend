@@ -5,5 +5,4 @@ node_modules/
 .npm
 .env
 .cache
-dist
 node_modules
