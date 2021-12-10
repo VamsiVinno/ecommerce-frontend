@@ -19,7 +19,7 @@ export class AddressComponent implements OnInit {
   @Output() isEdit=new EventEmitter<boolean>()
   frmStepTwo:any
   address:any;
-  addressStore!:any
+  addressStore:any=[]
   cartArray!:ProductModel[];
   totalPrice!:number
   totalAmount!:number
