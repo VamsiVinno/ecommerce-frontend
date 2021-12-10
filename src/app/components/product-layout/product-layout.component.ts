@@ -54,11 +54,12 @@ this.compService.brandsCategory.next(this.brandCategory)
     }
   }
   searchFilter(searchValue: any) {
-    
+    if(searchValue){
     let filterData = this.productsArray.filter((data: any) => {
-      return data.brand.toLowerCase().includes(searchValue!);
+      return data.brand.toLowerCase().includes(searchValue);
     });
     this.productsArray = filterData;
+  }
   }
   onSort(order: number) {
     let sorted;
