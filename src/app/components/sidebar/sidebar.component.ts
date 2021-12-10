@@ -85,7 +85,8 @@ export class SidebarComponent implements OnInit {
   }
   filterUnCheck(catWear:any,res:any){
     catWear.forEach((wear:any)=>{
-      if(res.includes(wear?.type))
+      if(wear){
+      if(res.includes(wear.type))
 {
   
   wear.enableCheckBox=true
@@ -93,6 +94,7 @@ export class SidebarComponent implements OnInit {
 else{
   wear.enableCheckBox=false
 }
+      }
 });
 
   }
