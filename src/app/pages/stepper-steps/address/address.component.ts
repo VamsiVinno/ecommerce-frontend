@@ -89,8 +89,6 @@ localStorage.setItem('address',JSON.stringify(this.addressArray))
 }
 onEdit(i:number){
   this.index=i
-  console.log(this.addressStore[i].username);
-  
   this.addressForm?.setValue({
     userdata:{
       username:this.addressStore[i].username,
@@ -104,23 +102,19 @@ pincode:this.addressStore[i].pincode
 }
 
 onPlaceOrder(){
-// this.router.navigate(['/orderplaced'])
-// console.log(this.addressArray[this.selectedAddressIndex]);
+
 this.pageService.shippingAddress.next(this.addressArray[this.selectedAddressIndex])
 this.secondStep.emit()
 this.isEdit.emit(true)
 this.frmStepTwo=true
 }
   onSubmit() {
-    console.log(this.addressForm?.value.userdata)
-    console.log(this.addressArray);
-    
+ 
     if(this.editAddress==false){
 this.addressArray.push(this.addressForm.value.userdata)
 localStorage.setItem('address',JSON.stringify(this.addressArray))
     }
     else{
-      console.log(this.addressStore[this.index]);
       
 this.addressStore[this.index].username=this.addressForm?.value.userdata.username
 this.addressStore[this.index].phone=this.addressForm?.value.userdata.phone
@@ -129,7 +123,6 @@ this.addressStore[this.index].landmark=this.addressForm?.value.userdata.landmark
 this.addressStore[this.index].pincode=this.addressForm?.value.userdata.pincode
 
     }
-console.log(this.addressArray);
 this.closebutton.nativeElement.click();
   }
 

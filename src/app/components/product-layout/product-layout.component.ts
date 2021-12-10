@@ -13,13 +13,11 @@ export class ProductLayoutComponent implements OnInit, OnChanges {
   productsArray: any;
   initialProducts: any;
   searchProduct: any;
- 
   productCategory: any;
   brandCategory:any
   subCategory:any
   p: number = 1;
   @Input() kidsCategory: any;
-
   emptyArray: boolean = false;
   displayedProductsArray: any;
   onProduct(i: number) {
@@ -43,10 +41,8 @@ this.route.navigate(['/product',`${this.productsArray[i].product_id}`])
     console.log(this.subCategory);
 this.subCategory.splice(i,1);
 this.compService.fashionCategory.next(this.subCategory)
-// this.compService.checkValue.next(false)
   }
   onBrandDelete(i:number){
-console.log(this.brandCategory[i]);
 this.brandCategory.splice(i,1);
 this.compService.brandsCategory.next(this.brandCategory)
   }
@@ -83,22 +79,17 @@ this.compService.brandsCategory.next(this.brandCategory)
   
     this.compService.fashionCategory.subscribe((cat: any) => {
         this.subCategory=cat
-        console.log(this.subCategory);
     })
     this.compService.brandsCategory.subscribe((cat: any) => {
       this.brandCategory=cat
           })
     this.ecomService.category.subscribe((res) => {
       this.p=1
-      console.log(res);
 if(res){
       this.productCategory = res;
-      console.log(this.productCategory);
 }
       let subCategory: any;
       if (this.productCategory) {
-        console.log(this.productCategory);
-
         this.ecomService.categoryProducts(this.productCategory).subscribe({
           next: (res) => {
          this.p=1
@@ -130,7 +121,6 @@ console.log(res);
             .categoryProducts(this.productCategory)
             .subscribe((res) => {
          this.p=1
-
               this.productsArray = res;
             });
             this.emptyArray = false;
@@ -140,10 +130,7 @@ console.log(res);
       this.compService.fashionCategory.subscribe((cat: any) => {
       this.compService.priceRange.subscribe((res: any) => {
         this.priceRange(res);
-       
        if(res.length<1 && this.subCategory.length>0){
-         console.log(this.subCategory);
-         
 this.fashionFilterChange(this.productCategory,cat)
         } 
         else  if (res.length < 1 && this.productCategory) {
@@ -151,7 +138,6 @@ this.fashionFilterChange(this.productCategory,cat)
           .categoryProducts(this.productCategory)
           .subscribe((res) => {
             this.p=1
-
             this.productsArray = res;
           });
         }
@@ -224,7 +210,6 @@ this.fashionFilterChange(this.productCategory,cat)
           .brandCategory(mainCategory, fashionCategory[i], brand[j])
           .subscribe((res: any) => {
          this.p=1
-
             brands.push(...res);
             this.productsArray = brands;
             if (this.productsArray == '') {
@@ -244,7 +229,6 @@ this.fashionFilterChange(this.productCategory,cat)
         .subscribe((res: any) => {
          this.p=1
           fashionFilter.push(...res);
-          console.log(fashionFilter);
         });
     }
     this.productsArray = fashionFilter;

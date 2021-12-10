@@ -18,12 +18,6 @@ export class HomepageComponent implements OnInit {
     this.ecom.category.next(category)
 this.router.navigate(['/products',`${category}`])
   }
-  // fashionCategory: any;
-
-  // onFashionCategory(event: Event) {
-  //   this.fashionCategory = event;
-  // }
-
   constructor(private ecom: EcomServices,private router:Router) {}
 
   ngOnInit(): void {}

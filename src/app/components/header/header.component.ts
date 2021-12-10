@@ -76,17 +76,13 @@ export class HeaderComponent implements OnInit, OnChanges {
     this.ecomService.showUserInfo.subscribe(res=>{
       this.showuser=res
     })
-    this.ecomService.cart().subscribe(res=>{
-      console.log(res);
-      
-    })
+   
     let cart:any=localStorage.getItem('cartLength');
     let length:any=JSON.parse(cart)
     this.cartLength=length;
     this.shared.getCartLength().subscribe(data=>{
       if(data){
       this.cartLength = data
-      console.log(this.cartLength);
       this.shared.local(this.cartLength)
     }
     })

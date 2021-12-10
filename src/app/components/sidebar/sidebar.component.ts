@@ -30,7 +30,6 @@ export class SidebarComponent implements OnInit {
   selectedCategory: any
 
   onCheck(event: Event, i: number) {
-    console.log(this.selectedCategory);
     
     if ((event.target as HTMLInputElement).checked == true) {
       this.brandsCategory = [];

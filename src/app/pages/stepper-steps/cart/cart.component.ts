@@ -157,7 +157,6 @@ this.cartItems=[]
         return acc + a.price * this.cartArray[i].product_count;
       }, 0);
     });
-    console.log(this.totalDiscount);
 
     this.totalAmount=this.totalPrice-this.totalDiscount!
   }
