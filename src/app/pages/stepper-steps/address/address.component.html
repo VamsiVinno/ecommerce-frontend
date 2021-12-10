@@ -23,7 +23,7 @@
 
           <div class="border ml-5 mb-3">
             <input
-              *ngif="addressStore.length"
+              *ngIf="addressStore.length"
               type="radio"
               (change)="onSelect(0)"
               value="{{ addressStore[0] }}"
