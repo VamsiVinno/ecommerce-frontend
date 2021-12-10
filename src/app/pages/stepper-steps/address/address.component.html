@@ -21,9 +21,9 @@
             DEFAULT ADDRESS
           </p>
 
-          <div class="border ml-5 mb-3">
+          <div class="border ml-5 mb-3" *ngIf="addressStore.length>0">
             <input
-              *ngIf="addressStore.length"
+              
               type="radio"
               (change)="onSelect(0)"
               value="{{ addressStore[0] }}"
